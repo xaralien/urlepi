@@ -16,28 +16,28 @@
                 <div class="row g-3 pt-3">
                     <div class="col-sm-3 col-6">
                         <div class="bg-light text-center rounded-circle py-4">
-                        <img class="fa fa-3x mb-3" src="<?= base_url('assets/'); ?>img/pro.png">
+                            <img class="fa fa-3x mb-3" src="<?= base_url('assets/'); ?>img/pro.png">
                             <!-- <i class="fa fa-3x fa-user-md text-primary mb-3"></i> -->
                             <h6 class="mb-0">Pekerja<small class="d-block text-primary">Professional</small></h6>
                         </div>
                     </div>
                     <div class="col-sm-3 col-6">
                         <div class="bg-light text-center rounded-circle py-4">
-                        <img class="fa fa-3x mb-3" src="<?= base_url('assets/'); ?>img/aman.png">
+                            <img class="fa fa-3x mb-3" src="<?= base_url('assets/'); ?>img/aman.png">
                             <!-- <i class="fa fa-3x fa-procedures text-primary mb-3"></i> -->
                             <h6 class="mb-0">3 Bulan<small class="d-block text-primary">Garansi</small></h6>
                         </div>
                     </div>
                     <div class="col-sm-3 col-6">
                         <div class="bg-light text-center rounded-circle py-4">
-                        <img class="fa fa-3x mb-3" src="<?= base_url('assets/'); ?>img/fast2.png">
+                            <img class="fa fa-3x mb-3" src="<?= base_url('assets/'); ?>img/fast2.png">
                             <!-- <i class="fa fa-3x fa-microscope text-primary mb-3"></i> -->
                             <h6 class="mb-0">Proses<small class="d-block text-primary">Cepat</small></h6>
                         </div>
                     </div>
                     <div class="col-sm-3 col-6">
                         <div class="bg-light text-center rounded-circle py-4">
-                        <img class="fa fa-3x mb-3" src="<?= base_url('assets/'); ?>img/akurat.png">
+                            <img class="fa fa-3x mb-3" src="<?= base_url('assets/'); ?>img/akurat.png">
                             <!-- <i class="fa fa-3x fa-ambulance text-primary mb-3"></i> -->
                             <h6 class="mb-0">Solusi<small class="d-block text-primary">Akurat</small></h6>
                         </div>

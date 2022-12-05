@@ -90,7 +90,7 @@
 }
 
 @media (max-width: 991.98px) {
-    .navbar-light .navbar-nav .nav-link  {
+    .navbar-light .navbar-nav .nav-link {
         margin-left: 0;
         padding: 10px 0;
     }
@@ -158,7 +158,7 @@
 }
 
 .price-carousel .owl-nav .owl-prev,
-.price-carousel .owl-nav .owl-next{
+.price-carousel .owl-nav .owl-next {
     position: relative;
     margin: 0 5px;
     width: 45px;

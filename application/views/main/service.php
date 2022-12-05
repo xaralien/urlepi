@@ -30,7 +30,7 @@
                     </a>
                 </div>
             </div>
-            <div class="col-lg-4 col-md-6">
+            <!-- <div class="col-lg-4 col-md-6">
                 <div class="service-item bg-light rounded d-flex flex-column align-items-center justify-content-center text-center">
                     <div class="service-icon mb-4">
                         <img class="fa fa-2x" style="transform: rotate(14deg)" src="<?= base_url('assets/'); ?>img/perbaiki.png">
@@ -77,7 +77,7 @@
                         <i class="bi bi-arrow-right"></i>
                     </a>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
 </div>

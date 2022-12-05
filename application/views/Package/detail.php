@@ -5,7 +5,7 @@
             <div class="col-lg-6">
                 <div class="bg-white text-center rounded p-5">
                     <h1 class="mb-4">Pilih Metode</h1>
-                    <form method="post" action="<?= base_url('package/konfirmasi'); ?>">
+                    <form method="post" action="<?= base_url('package/proses/' . $this->uri->segment(3)); ?>">
                         <div class="row g-3">
                             <!-- <div class="col-12 col-sm-6">
                                 <select class="form-select bg-light border-0" style="height: 55px;">
@@ -19,11 +19,25 @@
                                 <label style="float: left; " for=""><b>Metode Service</b> </label>
                                 <!-- <br>
                                 <hr> -->
-                                <select id="metodes" class="form-select border-0" style="height: 55px; ">
+                                <select name="metode_kirim" id="metodes" class="form-select border-0" style="height: 55px; ">
                                     <option selected>Pilih Metode</option>
-                                    <option value="1">Antar - Jemput</option>
-                                    <option value="2">Di Tempat</option>
-                                    <option value="3">Di Toko</option>
+                                    <option value="Antar Jemput">Antar - Jemput</option>
+                                    <option value="Di Tempat">Di Tempat</option>
+                                    <option value="Di Toko">Di Toko</option>
+                                </select>
+                                <hr style="margin-top: -5px;">
+                            </div>
+                            <div class="col-12 ">
+                                <label style="float: left; " for=""><b>Metode Pembayaran</b> </label>
+                                <!-- <br>
+                                <hr> -->
+                                <select name="metode_pembayaran" id="metodes" class="form-select border-0" style="height: 55px; ">
+                                    <option selected>Pilih Metode</option>
+                                    <option value="BRI">BRI</option>
+                                    <option value="BCA">BCA</option>
+                                    <option value="MANDIRI">MANDIRI</option>
+                                    <option value="GOPAY">GOPAY</option>
+                                    <option value="DANA">DANA</option>
                                 </select>
                                 <hr style="margin-top: -5px;">
                             </div>

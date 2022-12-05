@@ -28,6 +28,7 @@
 
     <!-- Template Stylesheet -->
     <link href="<?= base_url('assets/'); ?>css/style.css" rel="stylesheet">
+
 </head>
 
 <body>
@@ -72,32 +73,73 @@
     <div class="container-fluid sticky-top bg-white shadow-sm">
         <div class="container">
             <nav class="navbar navbar-expand-lg bg-white navbar-light py-3 py-lg-0">
-                <a href="<?= base_url('home/'); ?>" class="navbar-brand">
-                    <h1 class="m-0 text-uppercase text-primary"><img class=" me-2" src="<?= base_url('assets/'); ?>img/icon.png" style="object-fit: cover;">UrLepi</h1>
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarCollapse">
-                    <div class="navbar-nav ms-auto py-0">
-                        <a href="<?= base_url('home/'); ?>" class="nav-item nav-link <?php if ($this->uri->segment(1) == "home" && $this->uri->segment(2) == "") {
-                                                                                            echo 'active';
-                                                                                        } elseif ($this->uri->segment(1) == "" && $this->uri->segment(2) == "") {
-                                                                                            echo 'active';
-                                                                                        } ?>">Home</a>
+                <?php if ($this->session->userdata('role_id') == 1) { ?>
+                    <a href="<?= base_url('home/admin'); ?>" class="navbar-brand">
+                    <?php } else { ?>
 
-                        <a href="<?= base_url('service/service');  ?> " class="nav-item nav-link <?php if ($this->uri->segment(2) == "service") {
+                        <a href="<?= base_url('home/'); ?>" class="navbar-brand">
+                        <?php } ?>
+
+                        <h1 class="m-0 text-uppercase text-primary"><img class=" me-2" src="<?= base_url('assets/'); ?>img/icon.png" style="object-fit: cover;">UrLepi</h1>
+                        </a>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarCollapse">
+                            <div class="navbar-nav ms-auto py-0">
+                                <?php if ($this->session->userdata('role_id') == 1) { ?>
+                                    <a href="<?= base_url('home/admin'); ?>" class="nav-item nav-link <?php if ($this->uri->segment(1) == "home" && $this->uri->segment(2) == "admin") {
+                                                                                                            echo 'active';
+                                                                                                        } ?>">Home</a>
+                                <?php } else { ?>
+
+                                    <a href="<?= base_url('home/'); ?>" class="nav-item nav-link <?php if ($this->uri->segment(1) == "home" && $this->uri->segment(2) == "") {
                                                                                                         echo 'active';
-                                                                                                    } ?>">Services</a>
+                                                                                                    } elseif ($this->uri->segment(1) == "" && $this->uri->segment(2) == "") {
+                                                                                                        echo 'active';
+                                                                                                    } ?>">Home</a>
+                                <?php } ?>
 
-                        <a href="<?= base_url('harga/harga'); ?> " class="nav-item nav-link <?php if ($this->uri->segment(2) == "harga") {
-                                                                                                echo 'active';
-                                                                                            } ?>">Harga</a>
+                                <a href="<?= base_url('service/service');  ?> " class="nav-item nav-link <?php if ($this->uri->segment(2) == "service") {
+                                                                                                                echo 'active';
+                                                                                                            } ?>">Services</a>
 
-                        <a href="<?= base_url('Login/'); ?> " class="nav-item nav-link <?php if ($this->uri->segment(2) == "Login") {
-                                                                                            echo 'active';
-                                                                                        } ?>">Login</a>
-                        <!-- <div class="nav-item dropdown">
+                                <!-- <a href="<?= base_url('harga/harga'); ?> " class="nav-item nav-link <?php if ($this->uri->segment(2) == "harga") {
+                                                                                                                echo 'active';
+                                                                                                            } ?>">Harga</a> -->
+                                <?php
+                                if (!empty($this->session->userdata('email'))) {
+                                    if ($this->session->userdata('role_id') == 1) { ?>
+                                        <a href="<?= base_url('home/registeradmin'); ?> " class="nav-item nav-link">Register</a>
+
+                                        <div class="nav-item dropdown">
+                                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><?= $user; ?></a>
+                                            <div class="dropdown-menu m-0">
+                                                <a href="blog.html" class="dropdown-item">Profil</a>
+                                                <a href="<?= base_url('pesanan/');  ?>" class="dropdown-item">Detail Service</a>
+                                                <a href="team.html" class="dropdown-item">Pembelian</a>
+                                                <a href="<?= base_url('member/logout'); ?>" class="dropdown-item">Logout</a>
+                                            </div>
+                                        </div>
+                                    <?php } else if ($this->session->userdata('role_id') == 2) { ?>
+
+                                        <div class="nav-item dropdown">
+                                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><?= $user; ?></a>
+                                            <div class="dropdown-menu m-0">
+                                                <a href="blog.html" class="dropdown-item">Profil</a>
+                                                <a href="<?= base_url('pesanan/user');  ?>" class="dropdown-item">Detail Service</a>
+                                                <a href="team.html" class="dropdown-item">Pembelian</a>
+                                                <a href="<?= base_url('member/logout'); ?>" class="dropdown-item">Logout</a>
+                                            </div>
+                                        </div>
+                                    <?php } ?>
+                                <?php } else {
+                                    $user = "guest"; ?>
+                                    <a href="<?= base_url('home/login'); ?> " class="nav-item nav-link">Login</a>
+                                    <a href="<?= base_url('home/register'); ?> " class="nav-item nav-link">Register</a>
+                                    <!-- <a class="nav-item nav-link" data-toggle="modal" data-target="#loginModal" href="#">Login</a> -->
+                                <?php } ?>
+                                <!-- <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                             <div class="dropdown-menu m-0">
                                 <a href="blog.html" class="dropdown-item">Blog Grid</a>
@@ -108,11 +150,11 @@
                                 <a href="search.html" class="dropdown-item">Search</a>
                             </div>
                         </div> -->
-                        <a href="contact.html" class="nav-item nav-link <?php if ($this->uri->segment(2) == "Contact") {
-                                                                            echo 'active';
-                                                                        } ?>">Contact</a>
-                    </div>
-                </div>
+                                <a href="contact.html" class="nav-item nav-link <?php if ($this->uri->segment(2) == "Contact") {
+                                                                                    echo 'active';
+                                                                                } ?>">Contact</a>
+                            </div>
+                        </div>
             </nav>
         </div>
     </div>
