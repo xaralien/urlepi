@@ -1,4 +1,6 @@
 <!-- Pricing Plan Start -->
+<?= $this->session->flashdata('pesan'); ?>
+
 <div class="container-fluid py-5">
     <div class="container">
         <div class="text-center mx-auto mb-5" style="max-width: 500px;">

@@ -14,7 +14,7 @@
 <div class="content" style="margin-top: -60px;">
 
     <div class="container">
-        <h2 class="mb-1">Table Pesanan</h2>
+        <h2 class="mb-1">Table Pesanan Package</h2>
 
         <div class="table-responsive custom-table-responsive">
 
@@ -55,7 +55,7 @@
                             <td> <?= $o->type ?></td>
                             <td>
                                 <?= $o->nama_paket ?>
-                                <small class="d-block">Far far away, behind the word mountains</small>
+                                <!-- <small class="d-block"><?= $o->deskripsi ?></small> -->
                             </td>
                             <td><?= $o->metode_pembayaran ?></td>
                             <td><?= $o->metode_kirim ?></td>

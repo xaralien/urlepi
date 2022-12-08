@@ -65,7 +65,8 @@ class Package extends CI_Controller
 
         ];
         $this->ModelBooking->simpanData($data);
-        redirect('package/konfirmasi/' . $metode_pembayaran);
+        $this->session->set_flashdata('pesan', '<div class="alert alert-success alert-message" role="alert">Selamat!! Anda Berhasil membuat janji Service</div>');
+        redirect('pesanan/user');
     }
 
     public function konfirmasi()
@@ -135,8 +136,8 @@ class Package extends CI_Controller
 
         $this->load->library('upload', $config);
         if (!$this->upload->do_upload('image')) {
-            $error = array('error' => $this->upload->display_errors());
-            redirect('package/tambah' . $error);
+            $this->session->set_flashdata('pesan', '<div class="alert alert-danger alert-message" role="alert">Mohon Upload Foto dengan benar, Max. Size: 3MB, Max. Width: 1024px, Max. Height: 1000px.</div>');
+            redirect('package/tambah');
         } else {
             $image_data = $this->upload->data();
             $imgdata = file_get_contents($image_data['full_path']);
@@ -148,6 +149,7 @@ class Package extends CI_Controller
             $data['durasi_kerja'] =  $durasikerja;
 
             $this->db->insert('paket', $data);
+            $this->session->set_flashdata('pesan', '<div class="alert alert-success alert-message" role="alert">Selamat!! Anda berhasil Membuat Package Baru!</div>');
             unlink($image_data['full_path']);
         }
 

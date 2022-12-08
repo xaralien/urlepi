@@ -16,7 +16,7 @@
             <div class="col-lg-6">
                 <div class="bg-white text-center rounded p-5">
                     <h1 class="mb-4">Keluhan Anda</h1>
-                    <form method="post" action="<?= base_url('diagnosa/konfirmasi'); ?>">
+                    <form method="post" action="<?= base_url('diagnosa/proses'); ?>">
                         <div class="row g-3">
 
 
@@ -37,9 +37,14 @@
                                 </select>
                             </div> -->
                             <div class="col-12">
-                                <label style="float: left; " for=""><b>Masukan Keluhan Anda</b> </label>
+                                <label style="float: left; " for=""><b>Masukan Judul Keluhan</b> </label>
 
-                                <input type="label" class="form-control bg-light border-0" placeholder="Keluhan" style="height: 55px;">
+                                <input type="label" class="form-control bg-light border-0" name="judul" placeholder="Judul Keluhan" style="height: 55px;">
+                            </div>
+                            <div class="col-12">
+                                <label style="float: left; " for=""><b>Masukan Deskripsi Masalah Anda</b> </label>
+
+                                <input type="label" class="form-control bg-light border-0" name="deskripsi" placeholder="Deskripsi Masalah" style="height: 55px;">
                             </div>
                             <!-- <div class="col-12 col-sm-6">
                                 <input type="email" class="form-control bg-light border-0" placeholder="Your Email" style="height: 55px;">

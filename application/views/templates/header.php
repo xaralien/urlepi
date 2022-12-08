@@ -27,6 +27,7 @@
     <link href="<?= base_url('assets/'); ?>css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Template Stylesheet -->
+    <link href="<?= base_url('assets/'); ?>vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="<?= base_url('assets/'); ?>css/style.css" rel="stylesheet">
 
 </head>
@@ -107,28 +108,35 @@
                                 <!-- <a href="<?= base_url('harga/harga'); ?> " class="nav-item nav-link <?php if ($this->uri->segment(2) == "harga") {
                                                                                                                 echo 'active';
                                                                                                             } ?>">Harga</a> -->
+                                <a href="<?= base_url('home/contact'); ?>" class="nav-item nav-link <?php if ($this->uri->segment(2) == "contact") {
+                                                                                                        echo 'active';
+                                                                                                    } ?>">Contact</a>
                                 <?php
                                 if (!empty($this->session->userdata('email'))) {
                                     if ($this->session->userdata('role_id') == 1) { ?>
                                         <a href="<?= base_url('home/registeradmin'); ?> " class="nav-item nav-link">Register</a>
 
                                         <div class="nav-item dropdown">
-                                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><?= $user; ?></a>
+                                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i style="" class="fas fa-user-circle"></i> <?= $user; ?></a>
                                             <div class="dropdown-menu m-0">
-                                                <a href="blog.html" class="dropdown-item">Profil</a>
+                                                <!-- <a href="blog.html" class="dropdown-item">Profil</a> -->
                                                 <a href="<?= base_url('pesanan/');  ?>" class="dropdown-item">Detail Service</a>
-                                                <a href="team.html" class="dropdown-item">Pembelian</a>
+                                                <a href="<?= base_url('diagnosa/admin');  ?>" class="dropdown-item">Detail Diagnosa</a>
+
+                                                <!-- <a href="team.html" class="dropdown-item">Pembelian</a> -->
                                                 <a href="<?= base_url('member/logout'); ?>" class="dropdown-item">Logout</a>
                                             </div>
                                         </div>
                                     <?php } else if ($this->session->userdata('role_id') == 2) { ?>
 
-                                        <div class="nav-item dropdown">
-                                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><?= $user; ?></a>
+                                        <div class="nav-item dropdown ">
+                                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fas fa-user-circle"></i> <?= $user; ?></a>
                                             <div class="dropdown-menu m-0">
-                                                <a href="blog.html" class="dropdown-item">Profil</a>
+                                                <!-- <a href="blog.html" class="dropdown-item">Profil</a> -->
                                                 <a href="<?= base_url('pesanan/user');  ?>" class="dropdown-item">Detail Service</a>
-                                                <a href="team.html" class="dropdown-item">Pembelian</a>
+                                                <a href="<?= base_url('diagnosa/user');  ?>" class="dropdown-item">Detail Diagnosa</a>
+
+                                                <!-- <a href="team.html" class="dropdown-item">Pembelian</a> -->
                                                 <a href="<?= base_url('member/logout'); ?>" class="dropdown-item">Logout</a>
                                             </div>
                                         </div>
@@ -150,9 +158,7 @@
                                 <a href="search.html" class="dropdown-item">Search</a>
                             </div>
                         </div> -->
-                                <a href="contact.html" class="nav-item nav-link <?php if ($this->uri->segment(2) == "Contact") {
-                                                                                    echo 'active';
-                                                                                } ?>">Contact</a>
+
                             </div>
                         </div>
             </nav>

@@ -1,5 +1,6 @@
 <link href="<?= base_url('assets/'); ?>formadd/css/form.css" rel="stylesheet" type="text/css">
 <script src="<?= base_url('assets/'); ?>formadd/js/validation.js"></script>
+<?= $this->session->flashdata('pesan'); ?>
 
 <!-- Change or deletion of the name attributes in the input tag will lead to empty values on record submission-->
 <div class="zf-templateWidth">
