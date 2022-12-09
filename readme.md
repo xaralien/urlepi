@@ -9,8 +9,6 @@ alami dan memperbaiki laptop pelanggan.
 3. Button & Select Only
 4. Mudah untuk melakukan Transaksi
 5. GARANSI 3 BULAN!
-![GARANSI](/assets/img/cover/garansi.PNG)
-
 
 
 *******************
