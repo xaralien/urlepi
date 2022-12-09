@@ -15,7 +15,7 @@ class Member extends CI_Controller
         $password = $this->input->post('password', true);
         $user = $this->ModelUser->cekData(['email' => $email])->row_array();
         //jika usernya ada
-        if ($user) {
+        if ($email != Null) {
             //jika user sudah aktif
             if ($user['is_active'] == 1) {
                 //cek password
@@ -30,56 +30,64 @@ class Member extends CI_Controller
                     $this->session->set_userdata($data);
                     if ($user['role_id'] == 1) {
                         redirect('home/admin');
-                    } else {
+                    } else if ($user['role_id'] == 2) {
                         redirect('home');
+                    } else {
+                        $this->session->set_flashdata('pesan', '<div class="alert alert-danger alertmessage" role="alert">Password salah!!</div>');
+                        $this->load->view('templates/login');
                     }
                 } else {
-                    $this->session->set_flashdata('pesan', '<div class="alert alert-danger alertmessage" role="alert">Password salah!!</div>');
-                    redirect('home');
+                    $this->session->set_flashdata('pesan', '<div class="alert alert-danger alert-message" role="alert">User belum diaktifasi!!</div>');
+                    $this->load->view('templates/login');
                 }
             } else {
-                $this->session->set_flashdata('pesan', '<div class="alert alert-danger alert-message" role="alert">User belum diaktifasi!!</div>');
-                redirect('home');
+                $this->session->set_flashdata('pesan', '<div class="alert alert-danger alert-message" role="alert">Email tidak terdaftar!!</div>');
+                $this->load->view('templates/login');
             }
         } else {
-            $this->session->set_flashdata('pesan', '<div class="alert alert-danger alert-message" role="alert">Email tidak terdaftar!!</div>');
-            redirect('home');
+            $this->session->set_flashdata('pesan', '<div class="alert alert-danger alert-message" role="alert">Email tidak boleh kosong!!</div>');
+            $this->load->view('templates/login');
         }
     }
 
     public function daftar()
     {
-        $this->form_validation->set_rules('nama', 'Nama Lengkap', 'required', [
-            'required' => 'Nama Belum diis!!'
-        ]);
-        $this->form_validation->set_rules('alamat', 'Alamat Lengkap', 'required', [
-            'required' => 'Alamat Belum diis!!'
-        ]);
-        $this->form_validation->set_rules('email', 'Alamat Email', 'required|trim|valid_email|is_unique[user.email]', [
-            'valid_email' => 'Email Tidak Benar!!',
-            'required' => 'Email Belum diisi!!',
-            'is_unique' => 'Email Sudah Terdaftar!'
-        ]);
-        $this->form_validation->set_rules('password1', 'Password', 'required|trim|min_length[3]|matches[password2]', [
-            'matches' => 'Password Tidak Sama!!',
-            'min_length' => 'Password Terlalu Pendek'
-        ]);
-        $this->form_validation->set_rules('password2', 'Repeat Password', 'required|trim|matches[password1]');
-        $email = $this->input->post('email', true);
-        $data = [
-            'nama' => htmlspecialchars($this->input->post('nama', true)),
-            'alamat' => $this->input->post('alamat', true),
-            'email' => htmlspecialchars($email),
-            'nomor_tlp' => $this->input->post('nomor_tlp', true),
-            'image' => 'default.jpg',
-            'password' => password_hash($this->input->post('password1'), PASSWORD_DEFAULT),
-            'role_id' => 2,
-            'is_active' => 1,
-            'tanggal_input' => time()
-        ];
-        $this->ModelUser->simpanData($data);
-        $this->session->set_flashdata('pesan', '<div class="alert alert-success alert-message" role="alert">Selamat!! akun anggota anda sudah dibuat.</div>');
-        redirect(base_url());
+        if ($this->input->post('nama') == Null) {
+            $this->session->set_flashdata('pesan', '<div class="alert alert-danger alert-message" role="alert">Nama tidak boleh kosong!!</div>');
+            redirect('home/register');
+        } else if ($this->input->post('alamat') == Null) {
+            $this->session->set_flashdata('pesan', '<div class="alert alert-danger alert-message" role="alert">Alamat tidak boleh kosong!!</div>');
+            redirect('home/register');
+        } else if ($this->input->post('nomor_tlp') == Null) {
+            $this->session->set_flashdata('pesan', '<div class="alert alert-danger alert-message" role="alert">Nomor Telpon tidak boleh kosong!!</div>');
+            redirect('home/register');
+        } else if ($this->input->post('email') == Null) {
+            $this->session->set_flashdata('pesan', '<div class="alert alert-danger alert-message" role="alert">Email tidak boleh kosong!!</div>');
+            redirect('home/register');
+        } else if ($this->input->post('password1') == Null) {
+            $this->session->set_flashdata('pesan', '<div class="alert alert-danger alert-message" role="alert">Password tidak boleh kosong!!</div>');
+            redirect('home/register');
+        } else if ($this->input->post('password2') == Null) {
+            $this->session->set_flashdata('pesan', '<div class="alert alert-danger alert-message" role="alert">Konfirmasi Password tidak boleh kosong!!</div>');
+            redirect('home/register');
+        } else {
+
+            $email = $this->input->post('email', true);
+            $data = [
+                'nama' => htmlspecialchars($this->input->post('nama', true)),
+                'alamat' => $this->input->post('alamat', true),
+                'email' => htmlspecialchars($email),
+                'nomor_tlp' => $this->input->post('nomor_tlp', true),
+                'image' => 'default.jpg',
+                'password' => password_hash($this->input->post('password1'), PASSWORD_DEFAULT),
+                'role_id' => 2,
+                'is_active' => 1,
+                'tanggal_input' => time()
+            ];
+            $this->ModelUser->simpanData($data);
+            $this->session->set_flashdata('pesan', '<div class="alert alert-success alert-message" role="alert">Selamat!! akun anggota anda sudah dibuat.</div>');
+            redirect(base_url());
+        }
     }
     public function daftaradmin()
     {

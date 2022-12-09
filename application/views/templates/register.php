@@ -7,6 +7,7 @@
         <div class="container">
             <div class="signup-content">
                 <div class="signup-form">
+                    <?= $this->session->flashdata('pesan'); ?>
                     <h2 class="form-title">Sign up</h2>
                     <form action="<?= base_url('member/daftar'); ?>" method="POST" class="register-form" id="register-form">
                         <div class="form-group">
@@ -18,11 +19,11 @@
                             <input type="text" name="alamat" id="alamat" placeholder="Your Address" />
                         </div>
                         <div class="form-group">
-                            <label for="alamat"><i class="zmdi zmdi-city"></i></label>
-                            <input type="text" name="nomor_tlp" id="alamat" placeholder="Your Phone Number" />
+                            <label for="alamat"><i class="zmdi zmdi-phone"></i></label>
+                            <input type="text" onkeypress="return onlyNumberKey(event)" name="nomor_tlp" id="alamat" placeholder="Your Phone Number" />
                         </div>
                         <div class="form-group">
-                            <label for="email"><i class="zmdi zmdi-phone"></i></label>
+                            <label for="email"><i class="zmdi zmdi-email"></i></label>
                             <input type="email" name="email" id="email" placeholder="Your Email" />
                         </div>
                         <div class="form-group">
@@ -92,8 +93,17 @@
     </section> -->
 
 </div>
-
 <!-- JS -->
+<script>
+    function onlyNumberKey(evt) {
+
+        // Only ASCII character in that range allowed
+        var ASCIICode = (evt.which) ? evt.which : evt.keyCode
+        if (ASCIICode > 31 && (ASCIICode < 48 || ASCIICode > 57))
+            return false;
+        return true;
+    }
+</script>
 <script src="vendor/jquery/jquery.min.js"></script>
 <script src="js/main1.js"></script>
 </body><!-- This templates was made by Colorlib (https://colorlib.com) -->
