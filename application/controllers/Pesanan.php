@@ -460,6 +460,7 @@ class Pesanan extends CI_Controller
         $data = [
             'status_garansi' => "Sudah Di Pakai"
         ];
+        $this->session->set_flashdata('pesan', '<div class="alert alert-success alert-message" role="alert">Selamat!! Garansi Berhasil di gunakan</div>');
         $this->ModelBooking->updateOrder($data, ['id' => $id_pesanan]);
         redirect('pesanan/detail/' . $id_pesanan);
     }
@@ -477,7 +478,10 @@ class Pesanan extends CI_Controller
             $data = [
                 'status_garansi' => "Kadaluwarsa"
             ];
+            $this->session->set_flashdata('pesan', '<div class="alert alert-danger alert-message" role="alert">MAAF! Garansi sudah Kadaluwarsa</div>');
             $this->ModelBooking->updateOrder($data, ['id' => $id_pesanan]);
+        } else {
+            $this->session->set_flashdata('pesan', '<div class="alert alert-success alert-message" role="alert">Garansi Masih bisa digunakan</div>');
         }
 
         redirect('pesanan/detail/' . $id_pesanan);

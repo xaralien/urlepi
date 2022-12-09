@@ -400,6 +400,7 @@ class Diagnosa extends CI_Controller
         $data = [
             'status_garansi' => "Sudah Di Pakai"
         ];
+        $this->session->set_flashdata('pesan', '<div class="alert alert-success alert-message" role="alert">Selamat!! Garansi Berhasil di gunakan</div>');
         $this->ModelDiagnosa->updateOrder($data, ['id' => $id_diagnosa]);
         redirect('diagnosa/detail/' . $id_diagnosa);
     }
@@ -417,7 +418,10 @@ class Diagnosa extends CI_Controller
             $data = [
                 'status_garansi' => "Kadaluwarsa"
             ];
+            $this->session->set_flashdata('pesan', '<div class="alert alert-danger alert-message" role="alert">MAAF! Garansi sudah Kadaluwarsa</div>');
             $this->ModelDiagnosa->updateOrder($data, ['id' => $id_diagnosa]);
+        } else {
+            $this->session->set_flashdata('pesan', '<div class="alert alert-success alert-message" role="alert">Garansi Masih bisa digunakan</div>');
         }
 
         redirect('diagnosa/detail/' . $id_diagnosa);
